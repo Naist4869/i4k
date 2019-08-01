@@ -26,6 +26,7 @@ export default {
 <style>
     .block{
       margin: 20px auto;
+      
     }
   .el-carousel__item h3 {
     color: #475669;

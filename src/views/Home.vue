@@ -1,96 +1,93 @@
 <template>
-  <div id="home">
+  <div id="index">
     <el-container>
-      <el-header height="200px">
-        <el-row>
+      <el-header  height="300px">
+          <el-col :span="8"> <Carousel></Carousel></el-col>
           <el-col :span="16">
-            <h2>我是标题</h2>
-            <el-breadcrumb separator-class="el-icon-arrow-right" style="display: inline-block">
-              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item :to="{ path:'/about' }">关于我们</el-breadcrumb-item>
-            </el-breadcrumb>
-            <span id="time">2019-07-29 19:28</span>
+           
+            <!-- <el-col :span="6" v-for="video in videos.slice(0, 8)"   :key="video.id" >  
+
+            
+                    <div class="mini">
+ <Video :videoindex="video.id">
+   
+            <template v-slot:videotitle>{{video.title}}</template>
+            <template v-slot:videoinfo>{{video.info}}</template>
+          </Video>
+              </div>
+            </el-col> -->
+            <el-col :span="6" v-for="video in videos.slice(0, 8)"   :key="video.id" >
+               <MiniVideo>
+ <template v-slot:videotitle>{{video.title}}</template>
+         
+
+               </MiniVideo>
+            </el-col>
+           
+        
           </el-col>
-          <el-col :span="6">
-            <user></user>
-          </el-col>
-          <el-col :span="2"></el-col>
-        </el-row>
-      </el-header>
-    </el-container>
-    <el-container class="main">
-      <el-main>
-        <el-container>
-          <el-header>
        
-          </el-header>
-        </el-container>
+      </el-header>
+
+      <el-main>
+       
+        <el-col :span="4" v-for="video in videos" :key="video.id" class="aaa">
+          <Video :videoindex="video.id">
+            <template v-slot:videotitle>{{video.title}}</template>
+            <template v-slot:videoinfo>{{video.info}}</template>
+          </Video>
+        </el-col>
+
       </el-main>
-      <el-aside >
-        <BulletScreen></BulletScreen>
-        <h3>相关视频</h3>
-        <ul id="recommend">
-          <li v-for="video in videos" :key="video.id">
-            <Video :videoindex="video.id">
-              <template v-slot:videotitle>
-                <h3>{{video.title}}</h3>
-              </template>
-              <template v-slot:videoinfo>
-                <small>{{video.info}}</small>
-              </template>
-            </Video>
-          </li>
-        </ul>
-      </el-aside>
-      <el-col :span="3"></el-col>
     </el-container>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import User from "../components/User";
-import BulletScreen from "../components/BulletScreen.vue";
 import Video from "../components/Video";
 import * as API from "@/api/video";
+import Carousel from "../components/Carousel";
+import MiniVideo from "../components/MiniVideo";
+import 'video.js/dist/video-js.css';
+import { videoPlayer } from 'vue-video-player';
 
 export default {
-    data(){
-        return{
-             videos: [],
-        }
-    },
-  name: "home",
+  name: "index",
+  data() {
+    return {
+      index: Number,
+      videos: [],
+    };
+  },
   components: {
-    User,
-    BulletScreen,
     Video,
+    Carousel,
+    MiniVideo
     
   },
-  methods:{
-       load() {
+  methods: {
+    load() {
       API.getVideos().then(res => {
         this.videos = res.data;
       });
-      console.log(...videos)
-    },
+      // console.log(...videos);
+    }
   },
   beforeMount() {
     this.load();
   },
+  mounted() {
+    //    console.log(...videos)
+  }
 };
 </script>
 <style>
-#time {
-  margin-left: 20px;
-  font-size: 12px;
-  color: black;
+.mini{
+  width: 160px;
+  height: 100px;
 }
-.main {
-  height:3000px;
+#Video{
+  width:100%;
+  height: 100%;
 }
-#recommend{
-    list-style-type:none
-}
-
 </style>
