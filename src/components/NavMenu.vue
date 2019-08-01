@@ -8,24 +8,13 @@
                 background-color="#545c64"
                 text-color="#fff"
                 active-text-color="#ffd04b">
-            <el-menu-item index="/">首页</el-menu-item>
+            <el-menu-item index="/">视频详情</el-menu-item>
             <el-menu-item index="/about" >关于我们</el-menu-item>
             <el-menu-item index="/postvideo">投稿视频</el-menu-item>
-             <el-menu-item index="/index">守业</el-menu-item>
-            <el-submenu index="2">
-                <template slot="title">我的工作台</template>
-                <el-menu-item index="2-1">选项1</el-menu-item>
-                <el-menu-item index="2-2">选项2</el-menu-item>
-                <el-menu-item index="2-3">选项3</el-menu-item>
-                <el-submenu index="2-4">
-                    <template slot="title">选项4</template>
-                    <el-menu-item index="2-4-1">选项1</el-menu-item>
-                    <el-menu-item index="2-4-2">选项2</el-menu-item>
-                    <el-menu-item index="2-4-3">选项3</el-menu-item>
-                </el-submenu>
-            </el-submenu>
+             <el-menu-item index="/index">首页</el-menu-item>
+           
             <el-menu-item index="3" disabled>消息中心</el-menu-item>
-            <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+            <el-menu-item index="4"><a href="https://github.com/Naist4869/i4k" target="_blank">GitHub</a></el-menu-item>
         </el-menu>
 
 
