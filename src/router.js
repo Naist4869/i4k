@@ -33,12 +33,10 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/PostVideo.vue")
     },
-  
     {
       path: "/video/:id",
       name: "video",
       component: Video
     }
-  
   ]
 });

@@ -86,7 +86,9 @@ export default {
        load() {
       API.getVideo(this.$route.params.id).then(res => {
         this.video = res.data;
-        this.playerOptions.sources[0].src = this.video.url;
+        this.playerOptions.sources[0].src = this.video.video;
+        this.playerOptions.poster = this.video.poster;
+      
       });
  API.getVideos().then(res => {
         this.videos = res.data;
@@ -96,6 +98,8 @@ export default {
   },
   beforeMount() {
     this.load();
+  
+
   },
 };
 </script>

@@ -62,8 +62,8 @@ a:hover .card-mark {
   display: block;
   opacity: 1;
   white-space: nowrap;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
@@ -86,12 +86,13 @@ a:hover .image {
   outline: none;
   color: black;
 }
+
 .abc {
   max-height: 360px;
   max-width: 200px;
 }
 .abc a:link {
-  color: #000000;
+ color: #000000
 }
 
 .abc a:hover {
@@ -99,5 +100,7 @@ a:hover .image {
   transition-duration: 0.1s;
   transition-timing-function: linear;
 }
+
+
 
 </style>
