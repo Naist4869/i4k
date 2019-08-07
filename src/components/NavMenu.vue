@@ -14,7 +14,8 @@
           
            
             <el-menu-item index="3" disabled>消息中心</el-menu-item>
-            <el-menu-item index="4"><a href="https://github.com/Naist4869/i4k" target="_blank">GitHub</a></el-menu-item>
+            <el-menu-item><a href="https://github.com/Naist4869/i4k" target="_blank">GitHub</a></el-menu-item>
+            
         </el-menu>
 
 

@@ -10,4 +10,8 @@ const getVideo = id => axios.get(`/api/v1/video/${id}`).then(res => res.data);
 //视频列表
 const getVideos = () => axios.get("/api/v1/videos").then(res => res.data);
 
-export { postVideo, getVideo, getVideos };
+// 每日排行榜
+const getRankDaily = () =>
+  axios.get("/api/v1/rank/daily").then(res => res.data);
+
+export { postVideo, getVideo, getVideos, getRankDaily };

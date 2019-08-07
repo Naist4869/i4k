@@ -1,26 +1,34 @@
 <template>
 <div id="MiniVideo">
 
+ <div class="mask"></div>
+    <div class="dialog"></div>
+
+
+
+
     <div class="minivideo">
-    <a v-bind:href="'/video/' + videoindex" class="video" >
-      <img src="../assets/logo.png" class="image"  :key="cover" />
 
-      <div class="card-mark">
+      
+    <a v-bind:href="'/video/' + videoindex"  >
+      <img :src="poster" class="image"  />
+
+      <div class="card-mask">
         <div>
         
-            <slot name="videotitle">标题加载失败</slot>
+            <h3><slot name="videotitle">标题加载失败</slot></h3>
           
         </div>
         <div>
-        
-          <slot name="username">up主:</slot>
-          
+        <small>
+          <slot name="videoinfo"></slot>
+        </small>
         </div>
 
         <div>
-             
-          <slot name="play">播放量:</slot>
-           
+              <small>
+          <slot name="play"></slot>
+              </small>
         </div>
       </div>
     </a>
@@ -35,48 +43,40 @@ export default {
      
     };
   },
-  props: ["videoindex"],
+  props: ["videoindex","poster"],
 }
 </script>
 <style>
   
-#MiniVideo{
+.minivideo a .card-mask {
  
-  margin: 20px 20px;
-
+  display: none;
+  
 }
-#MiniVideo a .card-mark {
-     
-  opacity: 0; 
-   display: none; 
+.minivideo a .card-mask > *{
+ 
+  margin: 15px;
+  
 }
 
-#MiniVideo a:hover .card-mark {
-  position: absolute;
-  top: -10px;
+.minivideo a:hover .card-mask {
+  position: relative;
+  top: -140px;
   display: block;
-  opacity: 1;
+  width: 90%;
   white-space: nowrap;
-  width: 80px;
+transition-duration: 0.3s;
+  transition-timing-function: linear;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-  transition-duration: 0.3s;
+  background: linear-gradient(transparent,rgba(0,0,0,.2) 10%,rgba(0,0,0,.3) 35%,rgba(0,0,0,.6) 55%,rgba(0,0,0,.9));
 }
-
- .minivideo .image {
-   width: 40%;
-
+.minivideo .image {
+  width: 90%;
 }
-.minivideo{
-    position: relative;
-    display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#MiniVideo a:hover .image {
-  transition-duration: 0.3s;
-  background-color: rgba(0, 0, 0, 0.2);
+.minivideo a {
+  color: white
 }
 
 </style>

@@ -14,7 +14,7 @@
           :before-upload="BeforevideoUpload"
           :http-request="videoUploadRequest"
           multiple
-          :limit="3"
+          :limit="1"
           :on-exceed="handleExceed"
           :file-list="fileList"
         >
@@ -42,7 +42,7 @@
           v-model="form.title"
           type="text"
           placeholder="请输入内容"
-          maxlength="30"
+          maxlength="80"
           minlength="5"
           show-word-limit
         ></el-input>
@@ -91,7 +91,7 @@ export default {
     },
     handleExceed(files, fileList) {
       this.$message.warning(
-        `当前限制选择 3 个文件，本次选择了 ${
+        `当前限制选择 1 个文件，本次选择了 ${
           files.length
         } 个文件，共选择了 ${files.length + fileList.length} 个文件`
       );
@@ -119,7 +119,7 @@ export default {
           oReq.open("PUT", res.data.put, true);
           oReq.send(option.file);
           oReq.onload = () => {
-            this.fileList.push({name: option.file.name})
+            this.fileList.push({name: "上传成功"+option.file.name})
             this.form.video = res.data.key
             console.log(this.fileList)
            
@@ -135,13 +135,13 @@ export default {
 
     fnBeforeUpload(file) {
       const isPNG = file.type === "image/png";
-      const isLt2M = file.size / 1024 / 1024 < 2;
+      const isLt2M = file.size / 1024 / 1024 < 3;
 
       if (!isPNG) {
         this.$message.error("上传头像图片只能是 PNG 格式!");
       }
       if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
+        this.$message.error("上传头像图片大小不能超过 3MB!");
       }
       return isPNG && isLt2M;
     },

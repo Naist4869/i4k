@@ -5,31 +5,26 @@
         <el-col :span="8">
           <Carousel></Carousel>
         </el-col>
-        <el-col :span="16">
-          <!-- <el-col :span="6" v-for="video in videos.slice(0, 8)"   :key="video.id" >  
-
-            
-                    <div class="mini">
- <Video :videoindex="video.id">
-   
-            <template v-slot:videotitle>{{video.title}}</template>
-            <template v-slot:videoinfo>{{video.info}}</template>
-          </Video>
-              </div>
-          </el-col>-->
-          <el-col :span="6" v-for="video in videos.slice(0, 8)" :key="video.id">
-            <MiniVideo>
+        <el-col :span="16" >
+          <div id="rank">
+         <h3>每日排行榜</h3>
+          <el-col :span="6" v-for="video in dailyvideos.slice(0, 4)" :key="video.id">
+            <MiniVideo  :videoindex="video.id" :poster="video.poster">
               <template v-slot:videotitle>{{video.title}}</template>
+                <template v-slot:videoinfo>{{video.info}}</template>
+                   <template v-slot:play>播放量:{{video.view}}</template>
             </MiniVideo>
           </el-col>
+          </div>
         </el-col>
       </el-header>
 
       <el-main>
         <el-col :span="4" v-for="video in videos" :key="video.id" class="aaa">
-          <Video :videoindex="video.id">
+          <Video :videoindex="video.id" :poster="video.poster">
             <template v-slot:videotitle>{{video.title}}</template>
-            <template v-slot:videoinfo>{{video.info}}</template>
+          
+             <template v-slot:play>播放量：{{video.view}}</template>
           </Video>
         </el-col>
       </el-main>
@@ -49,7 +44,8 @@ export default {
   data() {
     return {
       index: Number,
-      videos: []
+      videos: [],
+      dailyvideos:[],
     };
   },
   components: {
@@ -63,6 +59,9 @@ export default {
         this.videos = res.data;
       });
       // console.log(...videos);
+       API.getRankDaily().then(res => {
+        this.dailyvideos = res.data;
+      });
     }
   },
   beforeMount() {
@@ -74,12 +73,15 @@ export default {
 };
 </script>
 <style>
-.mini {
-  width: 160px;
-  height: 100px;
-}
+
 #Video {
   width: 100%;
-  height: 100%;
+  height:100%;
+  
+ 
 }
+#rank{
+  margin: 15px 10px;
+}
+
 </style>

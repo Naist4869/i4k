@@ -1,34 +1,17 @@
 <template>
   <div id="Video">
-
-    <div class="mask">
-    <a v-bind:href="'/video/' + videoindex" class="video">
-      <img src="../assets/logo.png" class="image" />
-
-      <div class="card-mark">
-        <div>
-          <h3>
-            <slot name="videotitle">标题加载失败</slot>
-          </h3>
-        </div>
-        <div>
-          <slot name="username">up主名字加载失败</slot>
-        </div>
-        <div>
-          <slot name="play">播放量</slot>
-        </div>
-      </div>
-    </a>
+    <div class="dialog">
+      <a v-bind:href="'/video/' + videoindex">
+        <img :src="poster" class="image" />
+      </a>
     </div>
     <div class="abc">
       <a v-bind:href="'/video/' + videoindex">
-        <h2>
+        <h3>
           <slot name="videotitle">标题加载失败</slot>
-        </h2>
+        </h3>
 
-        <small>
-          <slot name="videoinfo">信息加载失败</slot>
-        </small>
+       
       </a>
     </div>
   </div>
@@ -37,11 +20,10 @@
 export default {
   data() {
     return {
-      fit: "cover",
-      url: "../assets/logo.png"
+     
     };
   },
-  props: ["videoindex"],
+  props: ["videoindex", "poster"],
   methods: {}
 };
 </script>
@@ -51,56 +33,46 @@ export default {
   max-width: 200px;
 }
 
-a .card-mark {
-  opacity: 0;
-  display: none;
+.image {
+  width: 90%;
 }
 
-a:hover .card-mark {
-  position: absolute;
-  top: 25px;
-  display: block;
-  opacity: 1;
-  white-space: nowrap;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
-  transition-duration: 0.3s;
+.abc {
+ position: relative;
+ width: 90%;
+    padding-top: 8px;
+    height: 90px;
+    transition: all .2s linear;
+    color: #222;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    text-align: left;
+
 }
-a:hover .card-mark > * {
-  margin: 20px auto;
+.abc h3 {
+   height: 50px;
+     word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    text-align: left;
 }
-.image {
-  width: 100%;
-}
-a:hover .image {
-  transition-duration: 0.3s;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.mask a {
+
+
+.abc a {
   text-decoration: none;
   position: relative;
   display: inline-block;
   outline: none;
   color: black;
 }
-
-.abc {
-  max-height: 360px;
-  max-width: 200px;
-}
 .abc a:link {
- color: #000000
+  color: #000000;
 }
 
 .abc a:hover {
   color: red;
-  transition-duration: 0.1s;
+  transition-duration: 0.3s;
   transition-timing-function: linear;
 }
-
-
-
 </style>
