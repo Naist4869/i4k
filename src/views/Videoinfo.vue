@@ -6,9 +6,11 @@
           <el-col :span="16">
             <h2>{{ video.title }}</h2>
             <el-breadcrumb
-               separator-class="el-icon-arrow-right" style="display: inline-block">
+               separator-class="el-icon-arrow-right" 
+               style="display: inline-block">
               <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item :to="{ path:'/about' }">关于我们</el-breadcrumb-item>
+              <el-breadcrumb-item :to="{ path:`/video/${video.id}` }">野生技术协会</el-breadcrumb-item>
+ 
             </el-breadcrumb>
             <span id="time">{{ video.created_at | formatDate }}</span>
             <div class="video-data">
@@ -69,6 +71,7 @@ export default {
 
   data() {
     return {
+       colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
       value: null,
       video: {},
       videos: [],
