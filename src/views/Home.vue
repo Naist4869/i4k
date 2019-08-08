@@ -21,11 +21,11 @@
 
       <el-main>
         <el-col :span="4" v-for="video in videos" :key="video.id" class="aaa">
-          <Video :videoindex="video.id" :poster="video.poster">
+          <NewVideo :videoindex="video.id" :poster="video.poster">
             <template v-slot:videotitle>{{video.title}}</template>
           
              <template v-slot:play>播放量：{{video.view}}</template>
-          </Video>
+          </NewVideo>
         </el-col>
       </el-main>
     </el-container>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Video from "../components/Video";
+import NewVideo from "../components/NewVideo";
 import * as API from "@/api/video";
 import Carousel from "../components/Carousel";
 import MiniVideo from "../components/MiniVideo";
@@ -46,14 +46,16 @@ export default {
       index: Number,
       videos: [],
       dailyvideos:[],
+      
     };
   },
   components: {
-    Video,
+    NewVideo,
     Carousel,
     MiniVideo
   },
   methods: {
+  
     load() {
       API.getVideos().then(res => {
         this.videos = res.data;
@@ -62,8 +64,10 @@ export default {
        API.getRankDaily().then(res => {
         this.dailyvideos = res.data;
       });
-    }
+    },
+ 
   },
+
   beforeMount() {
     this.load();
   },
@@ -74,7 +78,7 @@ export default {
 </script>
 <style>
 
-#Video {
+#NewVideo {
   width: 100%;
   height:100%;
   
