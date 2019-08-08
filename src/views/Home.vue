@@ -10,6 +10,7 @@
          <h3>每日排行榜</h3>
           <el-col :span="6" v-for="video in dailyvideos.slice(0, 4)" :key="video.id">
             <MiniVideo  :videoindex="video.id" :poster="video.poster">
+            
               <template v-slot:videotitle>{{video.title}}</template>
                 <template v-slot:videoinfo>{{video.info}}</template>
                    <template v-slot:play>播放量:{{video.view}}</template>
@@ -22,6 +23,7 @@
       <el-main>
         <el-col :span="4" v-for="video in videos" :key="video.id" class="aaa">
           <NewVideo :videoindex="video.id" :poster="video.poster">
+       
             <template v-slot:videotitle>{{video.title}}</template>
           
              <template v-slot:play>播放量：{{video.view}}</template>
@@ -65,6 +67,7 @@ export default {
         this.dailyvideos = res.data;
       });
     },
+  
  
   },
 

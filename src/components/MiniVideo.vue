@@ -9,8 +9,8 @@
 
     <div class="minivideo">
 
-      
-    <a v-bind:href="'/video/' + videoindex"  >
+      <router-link  :to="{ path:`/video/${videoindex}` }">
+    <a href="#" >
       <img :src="poster" class="image"  />
 
       <div class="card-mask">
@@ -32,6 +32,7 @@
         </div>
       </div>
     </a>
+    </router-link>
     </div>
 
   </div>

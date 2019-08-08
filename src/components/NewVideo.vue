@@ -1,18 +1,23 @@
 <template>
   <div id="NewVideo">
-    <div class="dialog">
-      <a v-bind:href="'/video/' + videoindex">
+    <div class="dialog" >
+    <router-link  :to="{ path:`/video/${videoindex}` }">
+      <a href="#">
         <img :src="poster" class="image" />
       </a>
+      </router-link>
     </div>
     <div class="abc">
-      <a v-bind:href="'/video/' + videoindex">
+      <router-link  :to="{ path:`/video/${videoindex}` }">
+      <a href="#">
         <h3>
           <slot name="videotitle">标题加载失败</slot>
         </h3>
 
        
       </a>
+    </router-link>
+      
     </div>
   </div>
 </template>
@@ -24,7 +29,11 @@ export default {
     };
   },
   props: ["videoindex", "poster"],
-  methods: {}
+  methods: {
+    //   goVideo(video) {
+    //   this.$router.push({name: "videoinfo", params: {id: video.id} });
+    // },
+  }
 };
 </script>
 <style>

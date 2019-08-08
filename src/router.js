@@ -1,12 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-
+import Videoinfo from "./views/Videoinfo.vue";
 Vue.use(Router);
 
 export default new Router({
-  mode: "history",
-  base: process.env.BASE_URL,
+  // mode: "hash",
+  // base: process.env.BASE_URL,
   routes: [
     {
       path: "/",
@@ -35,8 +35,8 @@ export default new Router({
     {
       path: "/video/:id",
       name: "videoinfo",
-      component: () =>
-        import(/* webpackChunkName: "videoinfo" */ "./views/Videoinfo.vue")
+      component: Videoinfo,
+      props: true
     }
     // {
     //   path: "*",
