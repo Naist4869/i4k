@@ -197,10 +197,12 @@ export default {
 
 <style>
 #postvideo {
-  margin: 20px 5px;
-  width: 50%;
+  margin: 3% 5%;
+  width: 90%;
   border: 1px solid gray;
   padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
 }
 
 .poster-uploader .el-upload {

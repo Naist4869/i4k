@@ -9,11 +9,11 @@
                 text-color="#fff"
                 active-text-color="#ffd04b">
             <el-menu-item index="/">首页</el-menu-item>
-            <el-menu-item index="/about" >关于我们</el-menu-item>
+          
             <el-menu-item index="/postvideo">投稿视频</el-menu-item>
           
            
-            <el-menu-item index="3" disabled>消息中心</el-menu-item>
+            <el-menu-item index="3" disabled>评论功能</el-menu-item>
             <el-menu-item><a href="https://github.com/Naist4869/i4k" target="_blank">GitHub</a></el-menu-item>
             
         </el-menu>

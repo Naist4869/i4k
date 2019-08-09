@@ -1,5 +1,5 @@
 <template>
-  <div id="Videoinfo">
+  <div id="Videoinfo" v-if="show">
     <el-container>
       <el-header height="200px">
         <el-row>
@@ -55,6 +55,48 @@
       <el-col :span="3"></el-col>
     </el-container>
   </div>
+
+   <div id="Videoinfo" v-else>
+    <el-container>
+      <el-header height="200px">
+        <el-row>
+          <el-col :span="24">
+            <h4>{{ video.title }}</h4>
+            <el-breadcrumb
+               separator-class="el-icon-arrow-right" 
+               style="display: inline-block">
+              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+              <el-breadcrumb-item :to="{ path:`/video/${video.id}` }">野生技术协会</el-breadcrumb-item>
+ 
+            </el-breadcrumb>
+            <span id="time">{{ video.created_at | formatDate }}</span>
+            <div class="video-data">
+              <span class="view">{{ video.view }}播放&nbsp;·&nbsp;</span>
+              <span title="历史累计弹幕数46982" class="dm">4.7万弹幕&nbsp;</span>
+              <span class="copyright">
+                <i class="el-icon-warning"></i>未经作者授权，禁止转载
+              </span>
+              <!---->
+            </div>
+          </el-col>
+        </el-row>
+      </el-header>
+    </el-container>
+    <el-container class="main">
+      <el-main>
+        <videoPlayer :options="playerOptions"></videoPlayer>
+
+        <div class="block">
+          <span class="demonstration">评分</span>
+          <el-rate v-model="value" :colors="colors"></el-rate>
+        </div>
+        <div class="info">{{ video.info }}</div>
+      </el-main>
+     
+     
+    </el-container>
+  </div>
+
 </template>
 
 <script>
@@ -117,6 +159,14 @@ props:['id'],
   },
   beforeMount() {
     this.load();
+  },
+   mounted() {
+    //    console.log(...videos)
+
+    let w = document.documentElement.offsetWidth || document.body.offsetWidth;
+    if (w < 1000) {
+      this.show = false;
+    }
   }
 };
 </script>
