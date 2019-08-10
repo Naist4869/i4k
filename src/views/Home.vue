@@ -37,7 +37,7 @@
       <el-main>
         <div v-if="show" class="showlist">
           <el-col :span="4" v-for="video in videos" :key="video.id" class="aaa">
-            <NewVideo :videoindex="video.id" :poster="video.poster">
+            <NewVideo :videoindex="video.id" :poster="video.poster"  >
               <template v-slot:videotitle>{{video.title}}</template>
 
               <template v-slot:play>播放量：{{video.view}}</template>
@@ -63,11 +63,13 @@ import NewVideo from "../components/NewVideo";
 import * as API from "@/api/video";
 import Carousel from "../components/Carousel";
 import MiniVideo from "../components/MiniVideo";
+import { showLoading, hideLoading } from '../loading';
 
 export default {
   name: "index",
   data() {
     return {
+      loading: true,
       show: true,
       index: Number,
       videos: [],
@@ -88,7 +90,8 @@ export default {
       API.getRankDaily().then(res => {
         this.dailyvideos = res.data;
       });
-    }
+    },
+    
   },
 
   beforeMount() {

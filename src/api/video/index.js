@@ -1,4 +1,30 @@
 import axios from "axios";
+import { showLoading, hideLoading } from "../../loading";
+// 添加请求拦截器
+axios.interceptors.request.use(
+  req => {
+    // let url = req.url;
+    // if (url.split("/").pop() === "getVideos") {
+    //   showLoading();
+    // }
+    showLoading();
+    return req;
+  },
+  err => Promise.reject(err)
+);
+
+// 添加响应拦截器
+axios.interceptors.response.use(
+  res => {
+    hideLoading();
+
+    return res;
+  },
+  err => {
+    hideLoading();
+    return Promise.reject(err);
+  }
+);
 
 // 创建视频
 const postVideo = from =>

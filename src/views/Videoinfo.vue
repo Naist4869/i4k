@@ -107,12 +107,12 @@ import * as API from "@/api/video";
 import "video.js/dist/video-js.css";
 import { videoPlayer } from "vue-video-player";
 import moment from "moment";
-
 export default {
   name: "videoinfo",
 props:['id'],
   data() {
     return {
+      show:true,
        colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
       value: null,
       video: {},
@@ -126,25 +126,21 @@ props:['id'],
           }
         ],
         poster: "/static/images/author.jpg",
-
         fluid: true
       }
     };
   },
-
   filters: {
     formatDate: function(value) {
       return moment.unix(value).format("YYYY-MM-DD HH:mm:ss");
     }
   },
-
   components: {
     User,
     BulletScreen,
     NewVideo,
     videoPlayer
   },
-
   methods: {
     load() {
       API.getVideo(this.id).then(res => {
@@ -162,7 +158,6 @@ props:['id'],
   },
    mounted() {
     //    console.log(...videos)
-
     let w = document.documentElement.offsetWidth || document.body.offsetWidth;
     if (w < 1000) {
       this.show = false;

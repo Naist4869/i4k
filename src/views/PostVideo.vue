@@ -228,4 +228,5 @@ export default {
   max-height: 178px;
   display: block;
 }
+
 </style>
