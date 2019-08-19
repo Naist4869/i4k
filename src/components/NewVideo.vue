@@ -10,9 +10,9 @@
     <div class="abc">
       <router-link  :to="{ path:`/video/${videoindex}` }">
       <a href="#">
-        <h3>
+          
           <slot name="videotitle">标题加载失败</slot>
-        </h3>
+  
 
        
       </a>
@@ -20,7 +20,7 @@
       
     </div>
   </div>
-</template>
+ </template>
 <script>
 export default {
   data() {
@@ -50,7 +50,7 @@ export default {
  position: relative;
  width: 90%;
     padding-top: 8px;
-    height: 90px;
+    height: 35%;
     transition: all .2s linear;
     color: #222;
     word-wrap: break-word;
@@ -61,6 +61,15 @@ export default {
 }
 .abc h3 {
    height: 50px;
+     word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    text-align: left;
+}
+
+.abc .videotitle {
+   height: 46px;
+   font-size: 10px;
      word-wrap: break-word;
     word-break: break-all;
     overflow: hidden;

@@ -38,7 +38,7 @@
         <div v-if="show" class="showlist">
           <el-col :span="4" v-for="video in videos" :key="video.id" class="aaa">
             <NewVideo :videoindex="video.id" :poster="video.poster"  >
-              <template v-slot:videotitle>{{video.title}}</template>
+              <template v-slot:videotitle><h3>{{video.title}}</h3></template>
 
               <template v-slot:play>播放量：{{video.view}}</template>
             </NewVideo>
@@ -47,7 +47,7 @@
         <div v-else class="showlist">
           <el-col :span="8" v-for="video in videos" :key="video.id" class="aaa">
             <NewVideo :videoindex="video.id" :poster="video.poster">
-              <template v-slot:videotitle>{{video.title}}</template>
+              <template v-slot:videotitle>  <div class="videotitle">{{video.title}}</div></template>
 
               <template v-slot:play>播放量：{{video.view}}</template>
             </NewVideo>

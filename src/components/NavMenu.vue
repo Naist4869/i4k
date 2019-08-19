@@ -15,6 +15,7 @@
            
             <el-menu-item index="3" disabled>评论功能</el-menu-item>
             <el-menu-item><a href="https://github.com/Naist4869/i4k" target="_blank">GitHub</a></el-menu-item>
+             <el-menu-item index="../../public/pages/2017108445-蓝竞程/index.html">作品</el-menu-item>
             
         </el-menu>
 
